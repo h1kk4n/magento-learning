@@ -13,5 +13,16 @@ services:
       - MYSQL_USER=magento
       - MYSQL_PASSWORD=magento
       - MYSQL_DATABASE=magento
+  magento-plain-elasticsearch:
+    container_name: magento-plain-elasticsearch
+    hostname: magento-plain-elasticsearch
+    image: elasticsearch:7.17.9
+    ports:
+      - "9202:9200"
+    volumes:
+      - elastic-data:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
 volumes:
   mysql-data:
+  elastic-data:
