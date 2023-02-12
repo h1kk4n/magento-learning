@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  magento-plain-mysql:
+    container_name: magento-plain-mysql
+    hostname: magento-plain-mysql
+    image: mysql:8.0.32-debian
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=magento
+      - MYSQL_PASSWORD=magento
+      - MYSQL_DATABASE=magento
+volumes:
+  mysql-data:
