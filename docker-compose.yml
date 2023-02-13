@@ -23,6 +23,15 @@ services:
       - elastic-data:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+  magento-plain-redis:
+    container_name: magento-plain-redis
+    hostname: magento-plain-redis
+    image: redis:6.2.10-alpine
+    ports:
+      - "6382:6379"
+    volumes:
+      - redis-data:/data
 volumes:
   mysql-data:
   elastic-data:
+  redis-data:
