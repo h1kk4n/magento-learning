@@ -23,6 +23,15 @@ services:
       - elastic-data:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+  magento-plain-kibana:
+    container_name: magento-plain-kibana
+    hostname: magento-plain-kibana
+    image: kibana:7.17.9
+    ports:
+      - "5602:5601"
+    environment:
+      SERVER_NAME: kibana.magento.learning
+      ELASTICSEARCH_HOSTS: '["http://magento-plain-elasticsearch:9200"]'
   magento-plain-redis:
     container_name: magento-plain-redis
     hostname: magento-plain-redis
